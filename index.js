@@ -48,29 +48,51 @@
 // })
 //                      LESSON 1 ENDS HERE
 
-//                      LESSON 2 START 
+//                      LESSON 2 START : READ WRITE FILE SYSTEM 
 // CLEANER WAY TO READ WRITE FILES:
 
-const fsPromises = require('fs').promises;
-const path = require('path');
+// const fsPromises = require('fs').promises;
+// const path = require('path');
 
-const fileOps = async () => {
-    try {
-        const data = await fsPromises.readFile(path.join(__dirname, 'files','starter.txt'), 'utf-8');
-        console.log(data);
+// const fileOps = async () => {
+//     try {
+//         const data = await fsPromises.readFile(path.join(__dirname, 'files','starter.txt'), 'utf-8');
+//         console.log(data);
 
-        await fsPromises.unlink(path.join(__dirname, 'files','starter.txt')); //unlink acts as delete
+//         await fsPromises.unlink(path.join(__dirname, 'files','starter.txt')); //unlink acts as delete
 
-        await fsPromises.writeFile(path.join(__dirname, 'files', 'promiseWrite.txt'), data);
-        await fsPromises.appendFile(path.join(__dirname, 'files', 'promiseWrite.txt'), '\n\nNice to meet you.');
-        await fsPromises.rename(path.join(__dirname, 'files', 'promiseWrite.txt'), path.join(__dirname, 'files', 'promiseComplete.txt'));
+//         await fsPromises.writeFile(path.join(__dirname, 'files', 'promiseWrite.txt'), data);
+//         await fsPromises.appendFile(path.join(__dirname, 'files', 'promiseWrite.txt'), '\n\nNice to meet you.');
+//         await fsPromises.rename(path.join(__dirname, 'files', 'promiseWrite.txt'), path.join(__dirname, 'files', 'promiseComplete.txt'));
         
-        const newData = await fsPromises.readFile(path.join(__dirname, 'files','promiseComplete.txt'), 'utf-8');
-        console.log(newData);
+//         const newData = await fsPromises.readFile(path.join(__dirname, 'files','promiseComplete.txt'), 'utf-8');
+//         console.log(newData);
 
-    } catch (error) {
-        console.error(error);
-    }
-}
+//     } catch (error) {
+//         console.error(error);
+//     }
+// }
 
-fileOps();
+// fileOps();
+
+////              LESSON 2 ENDS HERE  ///////
+
+
+// LESSON 3: Event Emitter //
+
+const logEvents = require('./logEvents');
+
+const EventEmitter = require('events');
+
+class MyEmitter extends EventEmitter {};
+
+//initialize the object we want to create
+const myEmitter = new MyEmitter();
+
+// add listener for the log event
+myEmitter.on('log', (msg) => logEvents(msg));
+
+setTimeout(() => {
+    //emit event
+    myEmitter.emit('log', 'log event emitted!');
+}, 2000);
