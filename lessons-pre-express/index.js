@@ -80,19 +80,19 @@
 
 // LESSON 3: Event Emitter //
 
-const logEvents = require('./logEvents');
+// const logEvents = require('./logEvents');
 
-const EventEmitter = require('events');
+// const EventEmitter = require('events');
 
-class Emitter extends EventEmitter {};
+// class Emitter extends EventEmitter {};
 
-//initialize the object we want to create
-const myEmitter = new Emitter();
+// //initialize the object we want to create
+// const myEmitter = new Emitter();
 
-// add listener for the log event
-myEmitter.on('log', (msg) => logEvents(msg));
+// // add listener for the log event
+// myEmitter.on('log', (msg) => logEvents(msg));
 
-setTimeout(() => {
-    //emit event
-    myEmitter.emit('log', 'log event emitted!');
-}, 2000);
+// setTimeout(() => {
+//     //emit event
+//     myEmitter.emit('log', 'log event emitted!');
+// }, 2000);

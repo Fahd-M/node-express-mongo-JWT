@@ -2,3 +2,38 @@
 20230210	15:52:29	db8dd156-af81-432d-a4c3-ebf125e78a9c	/css/style.css	GET
 20230210	15:52:29	871cda23-31e0-46e4-beaa-939df5c9a622	/img/img1.jpg	GET
 20230210	15:52:30	da47babd-442e-4a2e-bb70-a0ae1d7205f2	/favicon.ico	GET
+20230210	17:03:42	14d854f5-b6a8-47fe-80ab-b0ae94146208	GET	undefined	/
+20230210	17:03:42	87567105-aef4-4b71-9749-479b8d548e5f	GET	undefined	/css/style.css
+20230210	17:04:38	f40c465f-9abf-46ac-b281-a34036e79735	GET	undefined	/
+20230210	17:04:38	fcaa44bb-35a4-44c9-8c3c-e97388dd68e0	GET	undefined	/css/style.css
+20230210	17:05:12	0f9ed71a-a95e-428c-b3c3-312382e9143e	GET	undefined	/
+20230210	17:05:12	25ce84c4-384e-44a3-b865-dd65494c7ec4	GET	undefined	/css/style.css
+20230213	10:48:49	b0333a09-7a3c-4bce-8d39-6abc77ff55a2	GET	undefined	/css/style.css
+20230228	17:48:20	8663f3fd-c10a-4795-96b2-30fa583894f8	GET	undefined	/
+20230228	17:48:20	cfa02612-d5ac-4148-a198-94cd2c13e8ff	GET	undefined	/css/style.css
+20230228	17:48:21	35e32f2a-800e-4a4e-8631-d53d0788471a	GET	undefined	/favicon.ico
+20230228	17:48:40	835b7cf7-641c-4753-b3a9-945f9bd43dba	GET	undefined	/
+20230228	17:59:55	27a2327d-53af-48c8-8fa1-381ee0f68955	GET	undefined	/fahd
+20230228	17:59:55	7bdef6ce-6526-4115-bd59-e8d4b394ad96	GET	undefined	/css/style.css
+20230228	18:30:54	242d9f87-0959-40ab-9e05-b2d9118da82c	GET	undefined	/
+20230228	18:30:54	ecc7a3e6-cfe7-4b89-92d1-8848a4cbbd93	GET	undefined	/css/style.css
+20230228	18:31:01	f6359cb8-1969-42b4-9e9e-940dc676be06	GET	undefined	/new-page
+20230228	18:31:01	f720f6ff-558f-4ed7-8b21-06cd0a099bd5	GET	undefined	/css/style.css
+20230228	18:31:01	c825aa1e-a7aa-4f05-80ff-fa9e2c0e9263	GET	undefined	/img/img1.jpg
+20230228	18:31:05	8cd3ecae-d391-4798-9747-fd75128a293d	GET	undefined	/old-page
+20230228	18:31:05	aa0616d6-47a5-4450-aa5f-f2338dd2a396	GET	undefined	/new-page.html
+20230228	18:31:05	654a2cf5-b369-4723-acbd-ec672be24d2d	GET	undefined	/css/style.css
+20230228	18:31:05	58f18bc2-6a88-4f08-88df-730eea41eb9a	GET	undefined	/img/img1.jpg
+20230228	18:31:10	0a6b5e11-3318-44ec-942b-bc29eaff531f	GET	undefined	/subdir
+20230228	18:31:10	702eab47-404b-4ed5-a1c0-1891de87fae9	GET	undefined	/subdir/
+20230228	18:31:13	b5a66995-4110-45e0-bc59-9a30b7042f0a	GET	undefined	/subdir/test
+20230228	18:31:18	02b4e637-65c8-4194-8cf3-2aac6ede9efc	GET	undefined	/subdir/fahd
+20230228	18:31:18	e82e1165-f5d3-4777-a463-40fe3cd7ea90	GET	undefined	/subdir/css/style.css
+20230228	18:31:23	702d811a-5dc5-4560-9e21-9fe07000c671	GET	undefined	/fahd
+20230228	18:31:23	5e8af215-291b-45c4-b499-3d19d9e12dc9	GET	undefined	/css/style.css
+20230228	18:47:58	105993f7-2d81-4287-aa75-6e1597eb8da5	GET	undefined	/employees
+20230228	18:50:05	bf25c161-9dea-46e0-b5d5-13495a55fa59	POST	undefined	/employees
+20230228	18:51:12	38a2331d-5747-432b-b073-dc4f68ae6a7c	PUT	undefined	/employees
+20230228	18:51:50	7ad79795-ca0d-434f-b6c5-9a4446708973	DELETE	undefined	/employees
+20230228	18:52:35	72e1742f-2fa5-4b3b-b200-dd708edeee82	GET	undefined	/employees/1
+20230228	18:52:49	47079985-04c7-4835-82b9-fbd6573401e6	GET	undefined	/employees/1
