@@ -1,14 +1,23 @@
 const express = require('express');
 const app = express();
 const cors = require('cors');
+const credentials = require('./middleware/credentials');
 const corsOptions = require('./config/corsOptions');
 const path = require('path');
 const { logger } = require('./middleware/logEvents');
 const errorHandler = require('./middleware/errorHandler');
+const verifyJWT = require('./middleware/verifyJWT');
+const cookieParser = require('cookie-parser');
+
 const PORT = process.env.PORT || 3500; 
+
+
 
 // custom middleware logger
 app.use(logger);
+
+//Handle options credentials check - before CORS and fetch cookies credentials requirement
+app.use(credentials);
 
 //Cross origin resource sharing
 app.use(cors(corsOptions));
@@ -20,6 +29,9 @@ app.use(express.urlencoded({ extended: false }));
 //for json
 app.use(express.json());
 
+//middleware for cookies
+app.use(cookieParser());
+
 //serve static files
 app.use(express.static(path.join(__dirname, '/public')));
 
@@ -29,10 +41,19 @@ app.use(express.static(path.join(__dirname, '/public')));
 //ROUTES
 app.use('/', require('./routes/root'));
 //app.use('/subdir', require('./routes/subdir'));
-app.use('/employees', require('./routes/api/employees'));
 
 app.use('/register', require('./routes/register'));
 app.use('/auth', require('./routes/auth'));
+
+app.use('/refresh', require('./routes/refresh'));
+ //this endpoint receives the cookie that has refresh token, which will issue a new access token once the previous one expires
+app.use('/logout', require('./routes/logout'));
+
+
+app.use(verifyJWT);  // all lines below will require the jwt
+app.use('/employees', require('./routes/api/employees'));
+
+
 
 // //Route handlers example starts here
 // app.get('/hello(.html)?', (req,res, next) => {
