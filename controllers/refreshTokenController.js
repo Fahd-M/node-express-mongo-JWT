@@ -1,17 +1,16 @@
-// For the refresh token route
-const usersDB = {
-    users: require('../model/users.json'),
-    setUsers: function (data) {
-        this.users = data
-    }
-}
+// REFERNCE ONLY TO JSON DB 
+//For the refresh token route
+// const usersDB = {
+//     users: require('../model/users.json'),
+//     setUsers: function (data) {
+//         this.users = data
+//     }
+// }
 
+const User = require('../model/User');
 const jwt = require('jsonwebtoken');
-require('dotenv').config();
 
-
-
-const handleRefreshToken = (req, res) => {
+const handleRefreshToken = async (req, res) => {
     const cookies = req.cookies;
     if (!cookies?.jwt) return res.sendStatus(401);
     // console.log(cookies.jwt);
@@ -20,7 +19,8 @@ const handleRefreshToken = (req, res) => {
 
 
     //find the user that has been sent in
-    const foundUser = usersDB.users.find(person => person.refreshToken === refreshToken);
+    //const foundUser = usersDB.users.find(person => person.refreshToken === refreshToken);
+    const foundUser = await User.findOne({ refreshToken }).exec();
     if (!foundUser) return res.sendStatus(403); //Forbidden
 
     //evaluate JWT 

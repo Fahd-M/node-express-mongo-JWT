@@ -1,21 +1,25 @@
-const usersDB = {
-    users: require('../model/users.json'),
-    setUsers: function (data) {
-        this.users = data
-    }
-}
+// REFERENCE ONLY JSON DB VERSION
+// const usersDB = {
+//     users: require('../model/users.json'),
+//     setUsers: function (data) {
+//         this.users = data
+//     }
+// }
+// const fsPromises = require('fs').promises;
+// const path = require('path');
 
+const User = require('../model/User');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const fsPromises = require('fs').promises;
-const path = require('path');
+
 
 const handleLogin = async (req, res) => {
     const { user, pwd } = req.body;
     if (!user || !pwd) return res.status(400).json({'message': 'Username and password are required'});
 
     //find the user that has been sent in
-    const foundUser = usersDB.users.find(person => person.username === user);
+    //const foundUser = usersDB.users.find(person => person.username === user);
+    const foundUser = await User.findOne({ username: user }).exec();
     if (!foundUser) return res.sendStatus(401); //unauthorized
 
     //evaluate password 
@@ -42,14 +46,19 @@ const handleLogin = async (req, res) => {
         );
 
         //save refresh token in the db with current user
-        const otherUsers = usersDB.users.filter(person => person.username !== foundUser.username);
-        const currentUser = { ...foundUser, refreshToken };
+        //JSON DB VERSION
+        // const otherUsers = usersDB.users.filter(person => person.username !== foundUser.username);
+        // const currentUser = { ...foundUser, refreshToken };
 
-        usersDB.setUsers([...otherUsers, currentUser]);
-        await fsPromises.writeFile(
-            path.join(__dirname, '..', 'model', 'users.json'),
-            JSON.stringify(usersDB.users)
-        );
+        // usersDB.setUsers([...otherUsers, currentUser]);
+        // await fsPromises.writeFile(
+        //     path.join(__dirname, '..', 'model', 'users.json'),
+        //     JSON.stringify(usersDB.users)
+        // );
+        
+        foundUser.refreshToken = refreshToken; //Saving refreshToken with current user
+        const result = await foundUser.save();
+        console.log(result);
 
         res.cookie('jwt', refreshToken, { httpOnly: true, sameSite:'None', secure:true,  maxAge: 24 * 60 * 60 * 1000}); // for production. make sure to match the logout and refresh token controllers too.
         //maxAge is 1day 
