@@ -7,7 +7,6 @@ const usersDB = {
 
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-require('dotenv').config();
 const fsPromises = require('fs').promises;
 const path = require('path');
 
@@ -22,9 +21,16 @@ const handleLogin = async (req, res) => {
     //evaluate password 
     const match = await bcrypt.compare(pwd, foundUser.password);
     if(match) {
+        const roles = Object.values(foundUser.roles);
+
         //create JWTs to send and use with other protected routes also 
         const accessToken = jwt.sign(
-            { "username": foundUser.username },
+            { 
+                "UserInfo": {
+                    "username": foundUser.username,
+                    "roles": roles,
+                }
+            },
             process.env.ACCESS_TOKEN_SECRET, 
             { expiresIn: '45s' } // 5 min or 15 min in production
         );
