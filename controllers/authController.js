@@ -25,7 +25,7 @@ const handleLogin = async (req, res) => {
     //evaluate password 
     const match = await bcrypt.compare(pwd, foundUser.password);
     if(match) {
-        const roles = Object.values(foundUser.roles);
+        const roles = Object.values(foundUser.roles).filter(Boolean);
 
         //create JWTs to send and use with other protected routes also 
         const accessToken = jwt.sign(
@@ -67,7 +67,8 @@ const handleLogin = async (req, res) => {
         // this version when testing in postman or thunderclient while in dev mode
         // secure:true - only serves on https
 
-        res.json({ accessToken }); // on front end you store this accessToken in memory - not secure in localstorage or cookie. 
+        // send authorization roles and access token to user
+        res.json({ roles, accessToken }); // on front end you store this accessToken in memory - not secure in localstorage or cookie. 
 
     } else {
         res.sendStatus(401);

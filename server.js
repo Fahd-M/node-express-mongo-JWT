@@ -58,6 +58,7 @@ app.use('/logout', require('./routes/logout'));
 app.use(verifyJWT);  // all lines below will require the jwt
 app.use('/employees', require('./routes/api/employees'));
 
+app.use('/users', require('./routes/api/users'));
 
 
 // //Route handlers example starts here
